@@ -29,3 +29,30 @@ var romanToInt = function(s) {
 
   return result;
 };
+
+/**
+ * 最快题解
+ */
+var romanToInt = function (s) {
+  const valueMap = {
+    'I': 1,
+    'V': 5,
+    'X': 10,
+    'L': 50,
+    'C': 100,
+    'D': 500,
+    'M': 1000
+  }
+  let res = 0
+  const len = s.length
+  for (let i = 0; i < len - 1; i++) {
+    const cur = valueMap[s[i]]
+    if (valueMap[s[i]] < valueMap[s[i + 1]]) {
+      res -= cur
+    } else {
+      res += cur
+    }
+  }
+  res += valueMap[s[len - 1]]
+  return res
+};

@@ -33,3 +33,20 @@ var removeDuplicates = function(nums) {
 
   return nums.length;
 };
+
+/**
+ * 最快题解
+ */
+var removeDuplicates = function(nums) {
+  if (nums.length == 1) {
+      return 1;
+  }
+  let pre = 0;
+  for (let i = 1; i < nums.length; i++) {
+      if (nums[pre] != nums[i]) {
+          pre++;
+          nums[pre] = nums[i];
+      }
+  }
+  return pre + 1;
+};

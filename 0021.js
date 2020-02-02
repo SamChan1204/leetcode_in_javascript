@@ -35,3 +35,34 @@ var mergeTwoLists = function(l1, l2) {
 
   return result;
 };
+
+/**
+ * 最快题解
+ */
+var mergeTwoLists = function(l1, l2) {
+  if (!l1) return l2;
+  if(!l2) return l1;
+  let head, temp1, temp2;
+  if (l1.val > l2.val) {
+    head = l2;
+    temp1 = l1;
+    temp2 = l2.next;
+  } else {
+    head = l1;
+    temp1 = l1.next;
+    temp2 = l2;
+  }
+  let cur = head;
+  while(temp1 && temp2) {
+    if (temp1.val > temp2.val) {
+      cur.next = temp2;
+      temp2 = temp2.next;
+    } else {
+      cur.next = temp1;
+      temp1 = temp1.next;
+    }
+    cur = cur.next;
+  }
+  cur.next = temp1 === null ? temp2 : temp1;
+  return head;
+};

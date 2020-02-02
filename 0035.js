@@ -26,3 +26,19 @@ var searchInsert = function(nums, target) {
       return start;
   }
 };
+
+/**
+ * 最快题解
+ */
+var searchInsert = function(nums, target) {
+  let lens =nums.length;
+  let i =0,pos=0;
+  nums.forEach((cur,index)=>{
+      if(cur === target){
+          return index;
+      }else{
+          pos = (target>cur)?(index+1):pos;
+      }
+  })
+  return pos;
+};

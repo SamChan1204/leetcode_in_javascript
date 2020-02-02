@@ -29,3 +29,11 @@ var removeElement = function(nums, val) {
 
   return nums.length;
 };
+
+/**
+ * 最快题解
+ */
+var removeElement = function (nums, val) {
+  while (nums.indexOf(val, 0) >= 0) { nums.splice(nums.indexOf(val, 0), 1); }
+  return nums.length;
+};
